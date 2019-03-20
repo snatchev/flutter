@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/$PROJECT_ID/flutter'
+  id: build
+  args: ['build', 'apk']
+  dir: 'examples/flutter_gallery'
+- name: 'gcr.io/$PROJECT_ID/fastlane'
+  args: [deploy_play_store]
+  dir: 'examples/flutter_gallery/android'
+  waitFor:
+    - build
